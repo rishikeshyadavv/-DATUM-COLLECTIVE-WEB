@@ -5,6 +5,7 @@ import { RiftSection } from './components/RiftSection';
 import { MembersSection } from './components/MembersSection';
 import { EpochsSection } from './components/EpochsSection';
 import { ContactSection } from './components/ContactSection';
+import { AsciiScrambleText, AsciiHoverCard } from './components/AsciiEffects';
 import { fetchGitHubData, GitHubRepoData } from './lib/github';
 import { Terminal, Shield, Cpu, Code2, ArrowDown, ExternalLink } from 'lucide-react';
 
@@ -32,13 +33,13 @@ export default function App() {
       <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#080808]/90 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-12 flex items-center justify-between text-xs">
           
-          {/* Logo / Brand mark */}
+          {/* Logo / Brand mark with character scramble on hover */}
           <a
             href="#"
-            className="flex items-center gap-2 text-white hover:text-neutral-300 transition-colors font-bold tracking-wider"
+            className="flex items-center gap-2 text-white hover:text-neutral-300 transition-colors font-bold tracking-wider group"
           >
-            <span className="text-emerald-400">&gt;</span>
-            <span>DATUM COLLECTIVE</span>
+            <span className="text-emerald-400 group-hover:rotate-90 transition-transform duration-200 inline-block">&gt;</span>
+            <AsciiScrambleText className="font-bold">DATUM COLLECTIVE</AsciiScrambleText>
           </a>
 
           {/* Quick Monospace Jump Menu */}
@@ -47,31 +48,31 @@ export default function App() {
               href="#about"
               className="hover:text-white transition-colors hidden sm:inline"
             >
-              ABOUT
+              <AsciiScrambleText>ABOUT</AsciiScrambleText>
             </a>
             <a
               href="#projects"
               className="text-white hover:text-neutral-200 transition-colors font-semibold"
             >
-              [PROJECTS: RIFT]
+              <AsciiScrambleText>[PROJECTS: RIFT]</AsciiScrambleText>
             </a>
             <a
               href="#members"
               className="hover:text-white transition-colors"
             >
-              MEMBERS
+              <AsciiScrambleText>MEMBERS</AsciiScrambleText>
             </a>
             <a
               href="#epochs"
               className="hover:text-white transition-colors hidden sm:inline"
             >
-              EPOCHS
+              <AsciiScrambleText>EPOCHS</AsciiScrambleText>
             </a>
             <a
               href="#contact"
               className="hover:text-white transition-colors"
             >
-              CONTACT
+              <AsciiScrambleText>CONTACT</AsciiScrambleText>
             </a>
           </nav>
         </div>
@@ -88,11 +89,13 @@ export default function App() {
             <div className="lg:col-span-6 space-y-6">
               <div className="inline-flex items-center gap-2 border border-white/15 px-3 py-1 bg-black/40 text-[11px] text-neutral-300">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-ping" />
-                <span>ENGINEERING COLLECTIVE &amp; SYSTEMS LAB</span>
+                <AsciiScrambleText speed={25}>ENGINEERING COLLECTIVE &amp; SYSTEMS LAB</AsciiScrambleText>
               </div>
 
               <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
-                Tools for a more capable tomorrow.
+                <AsciiScrambleText speed={18} className="hover:text-neutral-100">
+                  Tools for a more capable tomorrow.
+                </AsciiScrambleText>
               </h1>
 
               {/* Exact short paragraph on what Datum Collective is */}
@@ -106,19 +109,19 @@ export default function App() {
               <div className="flex flex-wrap items-center gap-3 pt-2 text-xs">
                 <a
                   href="#projects"
-                  className="px-4 py-2 bg-white text-black font-semibold hover:bg-neutral-200 transition-colors flex items-center gap-2"
+                  className="px-4 py-2 bg-white text-black font-semibold hover:bg-neutral-200 transition-all flex items-center gap-2 group cursor-pointer hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]"
                 >
-                  <span>Explore RIFT Coding Agent</span>
-                  <ArrowDown className="w-3.5 h-3.5" />
+                  <AsciiScrambleText speed={20}>Explore RIFT Coding Agent</AsciiScrambleText>
+                  <ArrowDown className="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform" />
                 </a>
 
                 <a
                   href="https://github.com/Datum-Collective"
                   target="_blank"
                   rel="noreferrer"
-                  className="px-4 py-2 border border-neutral-700 bg-neutral-900/60 hover:bg-neutral-800 text-neutral-200 transition-colors flex items-center gap-2"
+                  className="px-4 py-2 border border-neutral-700 bg-neutral-900/60 hover:bg-neutral-800 text-neutral-200 hover:border-neutral-400 transition-all flex items-center gap-2"
                 >
-                  <span>GitHub Org</span>
+                  <AsciiScrambleText speed={25}>GitHub Org</AsciiScrambleText>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>
@@ -144,7 +147,7 @@ export default function App() {
                 <span className="text-neutral-500 font-mono text-xs">03</span>
                 <span className="text-neutral-600">//</span>
                 <h2 className="text-base sm:text-lg font-bold text-white tracking-widest uppercase font-mono">
-                  ABOUT THE COLLECTIVE
+                  <AsciiScrambleText>ABOUT THE COLLECTIVE</AsciiScrambleText>
                 </h2>
               </div>
               <div className="text-[11px] text-neutral-500 font-mono mt-1 sm:mt-0">
@@ -152,16 +155,16 @@ export default function App() {
               </div>
             </div>
 
-            {/* 2-3 short paragraphs, no fluff */}
+            {/* 2-3 short paragraphs, wrapped in ertdfgcvb style hover cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               
-              <div className="border border-neutral-800/80 bg-[#0a0a0a]/80 p-6 flex flex-col justify-between">
+              <AsciiHoverCard className="border border-neutral-800/80 bg-[#0a0a0a]/80 p-6 flex flex-col justify-between group">
                 <div>
                   <div className="text-[11px] text-neutral-500 font-mono tracking-widest uppercase mb-2">
                     [01 // PURPOSE]
                   </div>
                   <h3 className="text-base font-bold text-white mb-3">
-                    Verification Over Prediction
+                    <AsciiScrambleText>Verification Over Prediction</AsciiScrambleText>
                   </h3>
                   <p className="text-xs text-neutral-400 leading-relaxed font-mono">
                     Modern software engineering cannot rely on probabilistic text completion. Datum
@@ -170,18 +173,18 @@ export default function App() {
                     that verify it.
                   </p>
                 </div>
-                <div className="border-t border-neutral-900 pt-3 mt-6 text-[10px] text-neutral-500 font-mono">
+                <div className="border-t border-neutral-900 pt-3 mt-6 text-[10px] text-neutral-500 font-mono group-hover:text-neutral-300 transition-colors">
                   FOCUS: DETERMINISTIC RUNTIMES
                 </div>
-              </div>
+              </AsciiHoverCard>
 
-              <div className="border border-neutral-800/80 bg-[#0a0a0a]/80 p-6 flex flex-col justify-between">
+              <AsciiHoverCard className="border border-neutral-800/80 bg-[#0a0a0a]/80 p-6 flex flex-col justify-between group">
                 <div>
                   <div className="text-[11px] text-neutral-500 font-mono tracking-widest uppercase mb-2">
                     [02 // PHILOSOPHY]
                   </div>
                   <h3 className="text-base font-bold text-white mb-3">
-                    Uncompromising Craft
+                    <AsciiScrambleText>Uncompromising Craft</AsciiScrambleText>
                   </h3>
                   <p className="text-xs text-neutral-400 leading-relaxed font-mono">
                     We maintain an engineering lab ethos: zero vanity metrics, zero hollow marketing,
@@ -189,18 +192,18 @@ export default function App() {
                     permissive open-source licenses and evaluated on raw execution reliability.
                   </p>
                 </div>
-                <div className="border-t border-neutral-900 pt-3 mt-6 text-[10px] text-neutral-500 font-mono">
+                <div className="border-t border-neutral-900 pt-3 mt-6 text-[10px] text-neutral-500 font-mono group-hover:text-neutral-300 transition-colors">
                   PRINCIPLE: RADICAL TRANSPARENCY
                 </div>
-              </div>
+              </AsciiHoverCard>
 
-              <div className="border border-neutral-800/80 bg-[#0a0a0a]/80 p-6 flex flex-col justify-between">
+              <AsciiHoverCard className="border border-neutral-800/80 bg-[#0a0a0a]/80 p-6 flex flex-col justify-between group">
                 <div>
                   <div className="text-[11px] text-neutral-500 font-mono tracking-widest uppercase mb-2">
                     [03 // STRUCTURE]
                   </div>
                   <h3 className="text-base font-bold text-white mb-3">
-                    Distributed Guild
+                    <AsciiScrambleText>Distributed Guild</AsciiScrambleText>
                   </h3>
                   <p className="text-xs text-neutral-400 leading-relaxed font-mono">
                     Datum operates as an autonomous engineering collective. We coordinate around
@@ -208,10 +211,10 @@ export default function App() {
                     than conventional corporate hierarchies.
                   </p>
                 </div>
-                <div className="border-t border-neutral-900 pt-3 mt-6 text-[10px] text-neutral-500 font-mono">
+                <div className="border-t border-neutral-900 pt-3 mt-6 text-[10px] text-neutral-500 font-mono group-hover:text-neutral-300 transition-colors">
                   GOVERNANCE: RFC &amp; PEER REVIEW
                 </div>
-              </div>
+              </AsciiHoverCard>
 
             </div>
 

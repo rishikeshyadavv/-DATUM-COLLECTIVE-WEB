@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, Clock, GitCommit, Sparkles } from 'lucide-react';
+import { AsciiScrambleText, AsciiHoverCard } from './AsciiEffects';
 
 interface EpochItem {
   id: string;
@@ -71,7 +72,7 @@ export const EpochsSection: React.FC = () => {
             <span className="text-neutral-500 font-mono text-xs">06</span>
             <span className="text-neutral-600">//</span>
             <h2 className="text-base sm:text-lg font-bold text-white tracking-widest uppercase font-mono">
-              EPOCHS &amp; TIMELINE
+              <AsciiScrambleText>EPOCHS &amp; TIMELINE</AsciiScrambleText>
             </h2>
           </div>
           <div className="text-[11px] text-neutral-500 font-mono mt-1 sm:mt-0">
@@ -86,7 +87,7 @@ export const EpochsSection: React.FC = () => {
             const isCurrent = epoch.status === 'current';
 
             return (
-              <div
+              <AsciiHoverCard
                 key={epoch.id}
                 className={`border transition-all ${
                   isCurrent
@@ -96,7 +97,7 @@ export const EpochsSection: React.FC = () => {
               >
                 <button
                   onClick={() => setExpandedEpoch(isExpanded ? '' : epoch.id)}
-                  className="w-full p-4 sm:p-5 flex flex-wrap items-center justify-between text-left gap-3 focus:outline-none"
+                  className="w-full p-4 sm:p-5 flex flex-wrap items-center justify-between text-left gap-3 focus:outline-none cursor-pointer group"
                 >
                   <div className="flex items-center gap-3 sm:gap-4 font-mono">
                     <span
@@ -111,8 +112,8 @@ export const EpochsSection: React.FC = () => {
                       {epoch.tag}
                     </span>
 
-                    <span className="text-sm sm:text-base font-bold text-white">
-                      {epoch.title}
+                    <span className="text-sm sm:text-base font-bold text-white group-hover:text-neutral-100">
+                      <AsciiScrambleText speed={25}>{epoch.title}</AsciiScrambleText>
                     </span>
                   </div>
 
@@ -138,14 +139,14 @@ export const EpochsSection: React.FC = () => {
                         {epoch.milestones.map((m, mIdx) => (
                           <div key={mIdx} className="flex items-start gap-2">
                             <span className="text-neutral-600">&gt;</span>
-                            <span>{m}</span>
+                            <span className="hover:text-white transition-colors">{m}</span>
                           </div>
                         ))}
                       </div>
                     </div>
                   </div>
                 )}
-              </div>
+              </AsciiHoverCard>
             );
           })}
         </div>

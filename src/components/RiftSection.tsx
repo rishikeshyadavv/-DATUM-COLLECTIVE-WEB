@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import bannerSvg from '../assets/banner.svg';
+import { AsciiScrambleText, AsciiHoverCard } from './AsciiEffects';
 import {
   Terminal,
   Play,
@@ -150,15 +152,29 @@ export const RiftSection: React.FC<RiftSectionProps> = ({ githubData }) => {
                 <span>[VERIFICATION_CORE]</span>
               </div>
 
-              {/* RIFT GIANT ASCII / DOT-MATRIX WORDMARK */}
-              <div className="font-mono font-black tracking-tight leading-none text-white select-none my-2">
-                <div className="text-6xl sm:text-8xl md:text-9xl tracking-wider font-extrabold flex items-baseline">
-                  <span className="text-[#f5f5f0] drop-shadow-[0_0_12px_rgba(255,255,255,0.15)]">
-                    RIFT
+              {/* RIFT OFFICIAL BANNER SVG VISUAL FEATURE */}
+              <div className="my-4 border border-neutral-800 bg-[#0d1117] p-3 sm:p-4 relative overflow-hidden group shadow-2xl">
+                <div className="flex items-center justify-between border-b border-neutral-800/80 pb-2 mb-3 text-[10px] font-mono text-neutral-400">
+                  <span className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-cyan-400 inline-block animate-pulse" />
+                    <span className="text-neutral-300 font-semibold tracking-wider">RIFT_CORE_BANNER :: ASSET_V1</span>
                   </span>
-                  <span className="text-sm sm:text-base font-normal tracking-widest text-neutral-500 ml-4 border border-neutral-700 px-2 py-0.5 rounded-none bg-black/60">
+                  <span className="text-neutral-500 border border-neutral-800 px-1.5 py-0.5 bg-black/50">
                     {githubData.latestRelease?.tag || 'v0.1.12'}
                   </span>
+                </div>
+
+                <div className="flex justify-center items-center py-2 bg-[#090d13]/70 border border-neutral-900 overflow-hidden">
+                  <img
+                    src={bannerSvg}
+                    alt="RIFT Coding Agent Official Banner"
+                    className="w-full max-w-2xl h-auto max-h-36 sm:max-h-44 object-contain filter drop-shadow-[0_0_24px_rgba(0,102,255,0.25)] select-none transition-transform duration-500 group-hover:scale-[1.01]"
+                  />
+                </div>
+
+                <div className="flex items-center justify-between pt-2 mt-2 border-t border-neutral-900 text-[10px] font-mono text-neutral-500">
+                  <span>SOURCE: github.com/Datum-Collective/RIFT-coding-agent</span>
+                  <span className="text-emerald-400">STATUS: VERIFIED</span>
                 </div>
               </div>
 
@@ -181,38 +197,50 @@ export const RiftSection: React.FC<RiftSectionProps> = ({ githubData }) => {
 
             {/* Differentiators & Technical Capabilities */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 pt-6 border-t border-neutral-800 text-xs">
-              <div className="border border-neutral-800 p-3 bg-neutral-950/60">
-                <div className="text-[10px] text-neutral-500 mb-1 font-mono uppercase tracking-widest">
-                  [01 // EXECUTION]
+              <AsciiHoverCard className="border border-neutral-800 p-3 bg-neutral-950/60 flex flex-col justify-between group">
+                <div>
+                  <div className="text-[10px] text-neutral-500 mb-1 font-mono uppercase tracking-widest">
+                    [01 // EXECUTION]
+                  </div>
+                  <div className="font-semibold text-neutral-200 mb-1">
+                    <AsciiScrambleText speed={25}>Runs Actual Tests</AsciiScrambleText>
+                  </div>
+                  <div className="text-neutral-400 text-[11px] leading-relaxed">
+                    Executes project test, typecheck, and lint binaries, displaying raw stdout instead
+                    of simulated claims.
+                  </div>
                 </div>
-                <div className="font-semibold text-neutral-200 mb-1">Runs Actual Tests</div>
-                <div className="text-neutral-400 text-[11px] leading-relaxed">
-                  Executes project test, typecheck, and lint binaries, displaying raw stdout instead
-                  of simulated claims.
-                </div>
-              </div>
+              </AsciiHoverCard>
 
-              <div className="border border-neutral-800 p-3 bg-neutral-950/60">
-                <div className="text-[10px] text-neutral-500 mb-1 font-mono uppercase tracking-widest">
-                  [02 // CROSS-CHECK]
+              <AsciiHoverCard className="border border-neutral-800 p-3 bg-neutral-950/60 flex flex-col justify-between group">
+                <div>
+                  <div className="text-[10px] text-neutral-500 mb-1 font-mono uppercase tracking-widest">
+                    [02 // CROSS-CHECK]
+                  </div>
+                  <div className="font-semibold text-neutral-200 mb-1">
+                    <AsciiScrambleText speed={25}>Git Diff Validation</AsciiScrambleText>
+                  </div>
+                  <div className="text-neutral-400 text-[11px] leading-relaxed">
+                    Validates internal summaries directly against `git diff`, rejecting hallucinated or
+                    unsupported claims.
+                  </div>
                 </div>
-                <div className="font-semibold text-neutral-200 mb-1">Git Diff Validation</div>
-                <div className="text-neutral-400 text-[11px] leading-relaxed">
-                  Validates internal summaries directly against `git diff`, rejecting hallucinated or
-                  unsupported claims.
-                </div>
-              </div>
+              </AsciiHoverCard>
 
-              <div className="border border-neutral-800 p-3 bg-neutral-950/60">
-                <div className="text-[10px] text-neutral-500 mb-1 font-mono uppercase tracking-widest">
-                  [03 // BROWSER DRIVE]
+              <AsciiHoverCard className="border border-neutral-800 p-3 bg-neutral-950/60 flex flex-col justify-between group">
+                <div>
+                  <div className="text-[10px] text-neutral-500 mb-1 font-mono uppercase tracking-widest">
+                    [03 // BROWSER DRIVE]
+                  </div>
+                  <div className="font-semibold text-neutral-200 mb-1">
+                    <AsciiScrambleText speed={25}>Live Console Intercept</AsciiScrambleText>
+                  </div>
+                  <div className="text-neutral-400 text-[11px] leading-relaxed">
+                    Drives a headless browser instance to trap runtime console exceptions that screenshots
+                    cannot detect.
+                  </div>
                 </div>
-                <div className="font-semibold text-neutral-200 mb-1">Live Console Intercept</div>
-                <div className="text-neutral-400 text-[11px] leading-relaxed">
-                  Drives a headless browser instance to trap runtime console exceptions that screenshots
-                  cannot detect.
-                </div>
-              </div>
+              </AsciiHoverCard>
             </div>
           </div>
 
@@ -511,11 +539,11 @@ export const RiftSection: React.FC<RiftSectionProps> = ({ githubData }) => {
 
         {/* 4-COLUMN NUMBERED FOOTER STRIP (01 - 04) EXACTLY AS POSTER */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 border-t border-neutral-800 pt-8 mb-10">
-          <div className="border border-neutral-800/90 p-4 bg-black/60 flex flex-col justify-between">
+          <AsciiHoverCard className="border border-neutral-800/90 p-4 bg-black/60 flex flex-col justify-between group">
             <div>
               <div className="flex items-center justify-between font-mono text-xs text-neutral-400 mb-2">
                 <span className="font-bold text-white">01</span>
-                <span>+</span>
+                <span className="text-neutral-600 group-hover:text-neutral-300">+</span>
               </div>
               <div className="h-16 flex items-center justify-center my-2 border border-neutral-900 bg-neutral-950">
                 <pre className="text-[9px] text-neutral-500 font-mono text-center">
@@ -525,20 +553,20 @@ export const RiftSection: React.FC<RiftSectionProps> = ({ githubData }) => {
                 </pre>
               </div>
               <div className="text-xs font-semibold text-neutral-200 uppercase tracking-tight mt-2">
-                Builds Real Changes
+                <AsciiScrambleText speed={25}>Builds Real Changes</AsciiScrambleText>
               </div>
               <div className="text-[11px] text-neutral-400 mt-1">
                 Across your entire codebase with full AST and dependency awareness.
               </div>
             </div>
             <div className="text-neutral-500 text-xs font-mono mt-3">&gt;_</div>
-          </div>
+          </AsciiHoverCard>
 
-          <div className="border border-neutral-800/90 p-4 bg-black/60 flex flex-col justify-between">
+          <AsciiHoverCard className="border border-neutral-800/90 p-4 bg-black/60 flex flex-col justify-between group">
             <div>
               <div className="flex items-center justify-between font-mono text-xs text-neutral-400 mb-2">
                 <span className="font-bold text-white">02</span>
-                <span>+</span>
+                <span className="text-neutral-600 group-hover:text-neutral-300">+</span>
               </div>
               <div className="h-16 flex items-center justify-center my-2 border border-neutral-900 bg-neutral-950">
                 <pre className="text-[9px] text-neutral-500 font-mono text-center">
@@ -548,20 +576,20 @@ export const RiftSection: React.FC<RiftSectionProps> = ({ githubData }) => {
                 </pre>
               </div>
               <div className="text-xs font-semibold text-neutral-200 uppercase tracking-tight mt-2">
-                Tests and Validates
+                <AsciiScrambleText speed={25}>Tests and Validates</AsciiScrambleText>
               </div>
               <div className="text-[11px] text-neutral-400 mt-1">
                 Executes test binaries and validates output instead of trusting self-predictions.
               </div>
             </div>
             <div className="text-neutral-500 text-xs font-mono mt-3">&gt;_</div>
-          </div>
+          </AsciiHoverCard>
 
-          <div className="border border-neutral-800/90 p-4 bg-black/60 flex flex-col justify-between">
+          <AsciiHoverCard className="border border-neutral-800/90 p-4 bg-black/60 flex flex-col justify-between group">
             <div>
               <div className="flex items-center justify-between font-mono text-xs text-neutral-400 mb-2">
                 <span className="font-bold text-white">03</span>
-                <span>+</span>
+                <span className="text-neutral-600 group-hover:text-neutral-300">+</span>
               </div>
               <div className="h-16 flex items-center justify-center my-2 border border-neutral-900 bg-neutral-950">
                 <pre className="text-[9px] text-neutral-500 font-mono text-center">
@@ -570,20 +598,20 @@ export const RiftSection: React.FC<RiftSectionProps> = ({ githubData }) => {
                 </pre>
               </div>
               <div className="text-xs font-semibold text-neutral-200 uppercase tracking-tight mt-2">
-                Fixes Issues and Improves
+                <AsciiScrambleText speed={25}>Fixes Issues and Improves</AsciiScrambleText>
               </div>
               <div className="text-[11px] text-neutral-400 mt-1">
                 Feeds compiler, lint, and test errors straight back into self-healing correction loops.
               </div>
             </div>
             <div className="text-neutral-500 text-xs font-mono mt-3">&gt;_</div>
-          </div>
+          </AsciiHoverCard>
 
-          <div className="border border-neutral-800/90 p-4 bg-black/60 flex flex-col justify-between">
+          <AsciiHoverCard className="border border-neutral-800/90 p-4 bg-black/60 flex flex-col justify-between group">
             <div>
               <div className="flex items-center justify-between font-mono text-xs text-neutral-400 mb-2">
                 <span className="font-bold text-white">04</span>
-                <span>+</span>
+                <span className="text-neutral-600 group-hover:text-neutral-300">+</span>
               </div>
               <div className="h-16 flex items-center justify-center my-2 border border-neutral-900 bg-neutral-950">
                 <pre className="text-[9px] text-neutral-500 font-mono text-center">
@@ -592,14 +620,14 @@ export const RiftSection: React.FC<RiftSectionProps> = ({ githubData }) => {
                 </pre>
               </div>
               <div className="text-xs font-semibold text-neutral-200 uppercase tracking-tight mt-2">
-                Production-Ready Output
+                <AsciiScrambleText speed={25}>Production-Ready Output</AsciiScrambleText>
               </div>
               <div className="text-[11px] text-neutral-400 mt-1">
                 Verified changes you can merge and ship to production with high confidence.
               </div>
             </div>
             <div className="text-neutral-500 text-xs font-mono mt-3">&gt;_</div>
-          </div>
+          </AsciiHoverCard>
         </div>
 
         {/* SECTION FOOTER COLOPHON */}
