@@ -6,6 +6,7 @@ import { MembersSection } from './components/MembersSection';
 import { EpochsSection } from './components/EpochsSection';
 import { ContactSection } from './components/ContactSection';
 import { AsciiScrambleText, AsciiHoverCard } from './components/AsciiEffects';
+import { HoverEffectsToggle } from './components/HoverEffectsToggle';
 import { fetchGitHubData, GitHubRepoData } from './lib/github';
 import { Terminal, Shield, Cpu, Code2, ArrowDown, ExternalLink } from 'lucide-react';
 
@@ -42,39 +43,44 @@ export default function App() {
             <AsciiScrambleText className="font-bold">DATUM COLLECTIVE</AsciiScrambleText>
           </a>
 
-          {/* Quick Monospace Jump Menu */}
-          <nav className="flex items-center gap-3 sm:gap-6 text-[11px] text-neutral-400">
-            <a
-              href="#about"
-              className="hover:text-white transition-colors hidden sm:inline"
-            >
-              <AsciiScrambleText>ABOUT</AsciiScrambleText>
-            </a>
-            <a
-              href="#projects"
-              className="text-white hover:text-neutral-200 transition-colors font-semibold"
-            >
-              <AsciiScrambleText>[PROJECTS: RIFT]</AsciiScrambleText>
-            </a>
-            <a
-              href="#members"
-              className="hover:text-white transition-colors"
-            >
-              <AsciiScrambleText>MEMBERS</AsciiScrambleText>
-            </a>
-            <a
-              href="#epochs"
-              className="hover:text-white transition-colors hidden sm:inline"
-            >
-              <AsciiScrambleText>EPOCHS</AsciiScrambleText>
-            </a>
-            <a
-              href="#contact"
-              className="hover:text-white transition-colors"
-            >
-              <AsciiScrambleText>CONTACT</AsciiScrambleText>
-            </a>
-          </nav>
+          {/* Quick Monospace Jump Menu + Hover FX Toggle */}
+          <div className="flex items-center gap-4 sm:gap-6">
+            <nav className="flex items-center gap-3 sm:gap-6 text-[11px] text-neutral-400">
+              <a
+                href="#about"
+                className="hover:text-white transition-colors hidden sm:inline"
+              >
+                <AsciiScrambleText>ABOUT</AsciiScrambleText>
+              </a>
+              <a
+                href="#projects"
+                className="text-white hover:text-neutral-200 transition-colors font-semibold"
+              >
+                <AsciiScrambleText>[PROJECTS: RIFT]</AsciiScrambleText>
+              </a>
+              <a
+                href="#members"
+                className="hover:text-white transition-colors"
+              >
+                <AsciiScrambleText>MEMBERS</AsciiScrambleText>
+              </a>
+              <a
+                href="#epochs"
+                className="hover:text-white transition-colors hidden sm:inline"
+              >
+                <AsciiScrambleText>EPOCHS</AsciiScrambleText>
+              </a>
+              <a
+                href="#contact"
+                className="hover:text-white transition-colors"
+              >
+                <AsciiScrambleText>CONTACT</AsciiScrambleText>
+              </a>
+            </nav>
+
+            {/* Seamless Toggle Button */}
+            <HoverEffectsToggle />
+          </div>
         </div>
       </header>
 

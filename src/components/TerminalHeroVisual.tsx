@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react';
  * Interactive Terminal Animation Canvas
  * Renders generative kinetic typography / ASCII field
  * Simulating the prompt and alive character matrix of ertdfgcvb.xyz
+ * Optimized with IntersectionObserver and capped 30 FPS.
  */
 export const TerminalHeroVisual: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -11,12 +12,14 @@ export const TerminalHeroVisual: React.FC = () => {
 
   useEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    const container = containerRef.current;
+    if (!canvas || !container) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     let animId: number;
     let t = 0;
+    let isVisible = true;
 
     const charW = 10;
     const charH = 16;
@@ -25,39 +28,62 @@ export const TerminalHeroVisual: React.FC = () => {
 
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      canvas.width = Math.floor(rect.width * dpr);
+      canvas.height = Math.floor(rect.height * dpr);
       ctx.scale(dpr, dpr);
       cols = Math.floor(rect.width / charW);
       rows = Math.floor(rect.height / charH);
     };
 
     resize();
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', resize, { passive: true });
+
+    // IntersectionObserver to pause when scrolled out of view
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          isVisible = entry.isIntersecting;
+        });
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(container);
 
     const chars = ' .:;=+*#%@';
-    const binary = '01';
+    const charsLen = chars.length;
 
-    const loop = () => {
-      t += 0.03;
-      const width = canvas.width / (window.devicePixelRatio || 1);
-      const height = canvas.height / (window.devicePixelRatio || 1);
+    let lastTime = performance.now();
+    const frameInterval = 1000 / 30; // 30 FPS target
+
+    const loop = (now: number) => {
+      animId = requestAnimationFrame(loop);
+
+      if (!isVisible) return;
+
+      const delta = now - lastTime;
+      if (delta < frameInterval) return;
+      lastTime = now - (delta % frameInterval);
+
+      t += 0.045;
+      const width = canvas.width / (window.devicePixelRatio > 1.5 ? 1.5 : window.devicePixelRatio || 1);
+      const height = canvas.height / (window.devicePixelRatio > 1.5 ? 1.5 : window.devicePixelRatio || 1);
 
       ctx.clearRect(0, 0, width, height);
       ctx.font = '12px "IBM Plex Mono", monospace';
       ctx.textBaseline = 'top';
 
+      const cx = cols * 0.5;
+      const cy = rows * 0.5;
+
       for (let y = 0; y < rows; y++) {
+        const py = y * charH;
+        const dy = y - cy;
+
         for (let x = 0; x < cols; x++) {
           const px = x * charW;
-          const py = y * charH;
-
-          // Geometric field calculation
-          const cx = cols / 2;
-          const cy = rows / 2;
           const dx = x - cx;
-          const dy = y - cy;
+
           const dist = Math.sqrt(dx * dx + dy * dy);
           const angle = Math.atan2(dy, dx);
 
@@ -65,24 +91,24 @@ export const TerminalHeroVisual: React.FC = () => {
           const w1 = Math.sin(dist * 0.35 - t * 2.2);
           const w2 = Math.cos(angle * 4 + t);
           const v = (w1 + w2) * 0.5;
+          const absV = Math.abs(v);
 
-          const charIndex = Math.floor(Math.abs(v) * (chars.length - 1));
+          const charIndex = Math.min(charsLen - 1, Math.floor(absV * charsLen));
           const char = chars[charIndex] || '.';
 
-          const alpha = 0.18 + Math.abs(v) * 0.65;
+          const alpha = 0.18 + absV * 0.65;
           ctx.fillStyle = `rgba(240, 238, 230, ${alpha})`;
           ctx.fillText(char, px, py);
         }
       }
-
-      animId = requestAnimationFrame(loop);
     };
 
-    loop();
+    animId = requestAnimationFrame(loop);
 
     return () => {
       cancelAnimationFrame(animId);
       window.removeEventListener('resize', resize);
+      observer.disconnect();
     };
   }, []);
 
