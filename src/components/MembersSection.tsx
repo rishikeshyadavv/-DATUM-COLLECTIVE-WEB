@@ -171,6 +171,7 @@ export const MembersSection: React.FC<MembersSectionProps> = ({ contributorsData
                     rel="noreferrer"
                     className="p-1 border border-neutral-800 hover:border-neutral-400 text-neutral-400 hover:text-white transition-colors shrink-0"
                     title={`View @${member.handle} on GitHub`}
+                    aria-label={`View @${member.handle} on GitHub`}
                   >
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </a>

@@ -53,8 +53,13 @@ export const AsciiBackground: React.FC<AsciiCanvasProps> = ({
     let prevMouseY = -9999;
 
     const handleResize = () => {
+      const docHeight = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight,
+        window.innerHeight
+      );
       width = canvas.parentElement ? canvas.parentElement.clientWidth : window.innerWidth;
-      height = canvas.parentElement ? canvas.parentElement.clientHeight : window.innerHeight;
+      height = canvas.parentElement ? Math.max(canvas.parentElement.clientHeight, docHeight) : docHeight;
 
       // 1x native resolution is crisp for monospace grid and uses minimal memory
       canvas.width = width;

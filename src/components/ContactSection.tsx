@@ -78,6 +78,7 @@ export const ContactSection: React.FC = () => {
                   href={channel.href}
                   target="_blank"
                   rel="noreferrer"
+                  aria-label={`${channel.name} (${channel.handle})`}
                   className="flex flex-col h-full justify-between"
                 >
                   <div>
