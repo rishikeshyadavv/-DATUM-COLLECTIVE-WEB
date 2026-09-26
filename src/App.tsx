@@ -7,6 +7,7 @@ import { EpochsSection } from './components/EpochsSection';
 import { ContactSection } from './components/ContactSection';
 import { AsciiScrambleText, AsciiHoverCard } from './components/AsciiEffects';
 import { HoverEffectsToggle } from './components/HoverEffectsToggle';
+import { DatumLogo } from './components/DatumLogo';
 import { fetchGitHubData, GitHubRepoData } from './lib/github';
 import { Terminal, Shield, Cpu, Code2, ArrowDown, ExternalLink } from 'lucide-react';
 
@@ -37,9 +38,9 @@ export default function App() {
           {/* Logo / Brand mark with character scramble on hover */}
           <a
             href="#"
-            className="flex items-center gap-2 text-white hover:text-neutral-300 transition-colors font-bold tracking-wider group"
+            className="flex items-center gap-2.5 text-white hover:text-neutral-300 transition-colors font-bold tracking-wider group"
           >
-            <span className="text-emerald-400 group-hover:rotate-90 transition-transform duration-200 inline-block">&gt;</span>
+            <DatumLogo size={20} className="group-hover:scale-110 transition-transform duration-300" />
             <AsciiScrambleText className="font-bold">DATUM COLLECTIVE</AsciiScrambleText>
           </a>
 
@@ -93,7 +94,8 @@ export default function App() {
             
             {/* Left: Collective Statement */}
             <div className="lg:col-span-6 space-y-6">
-              <div className="inline-flex items-center gap-2 border border-white/15 px-3 py-1 bg-black/40 text-[11px] text-neutral-300">
+              <div className="inline-flex items-center gap-2.5 border border-white/15 px-3 py-1.5 bg-black/50 text-[11px] text-neutral-300">
+                <DatumLogo size={16} />
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-ping" />
                 <AsciiScrambleText speed={25}>ENGINEERING COLLECTIVE &amp; SYSTEMS LAB</AsciiScrambleText>
               </div>
@@ -241,7 +243,8 @@ export default function App() {
       {/* FOOTER */}
       <footer className="border-t border-white/10 bg-[#050505] py-8 text-neutral-500 text-xs font-mono">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
+            <DatumLogo size={18} />
             <span className="text-neutral-300 font-bold">DATUM COLLECTIVE</span>
             <span className="text-neutral-700">|</span>
             <span>OPEN SOURCE &bull; MIT LICENSE</span>

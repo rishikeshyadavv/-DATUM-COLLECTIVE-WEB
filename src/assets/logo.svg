@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%" fill="none" shape-rendering="crispEdges">
+  <defs>
+    <filter id="amber-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    .bg { fill: #000000; }
+    .glyph {
+      font-family: 'IBM Plex Mono', 'JetBrains Mono', 'Courier New', monospace;
+      font-size: 5.5px;
+      font-weight: 700;
+      fill: #e8d08d;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+    .bright { fill: #fff5c0; filter: drop-shadow(0 0 1.2px #ffd700); }
+    .dim { fill: #b89f58; opacity: 0.85; }
+  </style>
+
+  <!-- Background container -->
+  <rect width="100" height="100" class="bg" rx="4" />
+
+  <!-- The Binary Delta / Upward Arrow Emblem constructed of matrix ASCII bits -->
+  <g filter="url(#amber-glow)">
+    <!-- Row 1 (Apex) -->
+    <text x="50" y="22" class="glyph bright">1</text>
+
+    <!-- Row 2 -->
+    <text x="47" y="27" class="glyph">1</text>
+    <text x="50" y="27" class="glyph bright">0</text>
+    <text x="53" y="27" class="glyph">1</text>
+
+    <!-- Row 3 -->
+    <text x="44" y="32" class="glyph">1</text>
+    <text x="47" y="32" class="glyph bright">0</text>
+    <text x="50" y="32" class="glyph">0</text>
+    <text x="53" y="32" class="glyph bright">0</text>
+    <text x="56" y="32" class="glyph dim">1</text>
+
+    <!-- Row 4 -->
+    <text x="41" y="37" class="glyph dim">.</text>
+    <text x="44" y="37" class="glyph bright">0</text>
+    <text x="47" y="37" class="glyph">1</text>
+    <text x="50" y="37" class="glyph bright">1</text>
+    <text x="53" y="37" class="glyph">0</text>
+    <text x="56" y="37" class="glyph bright">0</text>
+    <text x="59" y="37" class="glyph dim">.</text>
+
+    <!-- Row 5 -->
+    <text x="38" y="42" class="glyph">0</text>
+    <text x="41" y="42" class="glyph bright">0</text>
+    <text x="44" y="42" class="glyph">1</text>
+    <text x="47" y="42" class="glyph bright">1</text>
+    <text x="50" y="42" class="glyph">1</text>
+    <text x="53" y="42" class="glyph bright">0</text>
+    <text x="56" y="42" class="glyph">0</text>
+    <text x="59" y="42" class="glyph bright">1</text>
+    <text x="62" y="42" class="glyph">0</text>
+
+    <!-- Row 6 -->
+    <text x="35" y="47" class="glyph bright">0</text>
+    <text x="38" y="47" class="glyph">0</text>
+    <text x="41" y="47" class="glyph bright">0</text>
+    <text x="44" y="47" class="glyph">1</text>
+    <text x="47" y="47" class="glyph bright">0</text>
+    <text x="50" y="47" class="glyph">0</text>
+    <text x="53" y="47" class="glyph bright">0</text>
+    <text x="56" y="47" class="glyph">1</text>
+    <text x="59" y="47" class="glyph bright">0</text>
+    <text x="62" y="47" class="glyph">0</text>
+    <text x="65" y="47" class="glyph dim">1</text>
+
+    <!-- Row 7 -->
+    <text x="33" y="52" class="glyph">1</text>
+    <text x="36" y="52" class="glyph bright">0</text>
+    <text x="39" y="52" class="glyph">0</text>
+    <text x="42" y="52" class="glyph bright">0</text>
+    <text x="45" y="52" class="glyph">0</text>
+    <text x="48" y="52" class="glyph bright">1</text>
+    <text x="51" y="52" class="glyph">0</text>
+    <text x="54" y="52" class="glyph bright">1</text>
+    <text x="57" y="52" class="glyph">1</text>
+    <text x="60" y="52" class="glyph bright">0</text>
+    <text x="63" y="52" class="glyph">1</text>
+    <text x="66" y="52" class="glyph bright">0</text>
+
+    <!-- Row 8 (Inner notch cut starts to form upward chevron) -->
+    <text x="30" y="57" class="glyph bright">1</text>
+    <text x="33" y="57" class="glyph">0</text>
+    <text x="36" y="57" class="glyph bright">0</text>
+    <text x="39" y="57" class="glyph">0</text>
+    <text x="42" y="57" class="glyph bright">0</text>
+    <text x="45" y="57" class="glyph">0</text>
+    <text x="55" y="57" class="glyph bright">1</text>
+    <text x="58" y="57" class="glyph">0</text>
+    <text x="61" y="57" class="glyph bright">0</text>
+    <text x="64" y="57" class="glyph">1</text>
+    <text x="67" y="57" class="glyph bright">0</text>
+    <text x="70" y="57" class="glyph dim">0</text>
+
+    <!-- Row 9 -->
+    <text x="28" y="62" class="glyph">0</text>
+    <text x="31" y="62" class="glyph bright">0</text>
+    <text x="34" y="62" class="glyph">0</text>
+    <text x="37" y="62" class="glyph bright">0</text>
+    <text x="40" y="62" class="glyph">0</text>
+    <text x="43" y="62" class="glyph bright">1</text>
+    <text x="57" y="62" class="glyph">0</text>
+    <text x="60" y="62" class="glyph bright">0</text>
+    <text x="63" y="62" class="glyph">1</text>
+    <text x="66" y="62" class="glyph bright">0</text>
+    <text x="69" y="62" class="glyph">0</text>
+    <text x="72" y="62" class="glyph bright">1</text>
+
+    <!-- Row 10 -->
+    <text x="26" y="67" class="glyph bright">1</text>
+    <text x="29" y="67" class="glyph">0</text>
+    <text x="32" y="67" class="glyph bright">0</text>
+    <text x="35" y="67" class="glyph">0</text>
+    <text x="38" y="67" class="glyph bright">0</text>
+    <text x="41" y="67" class="glyph">1</text>
+    <text x="59" y="67" class="glyph bright">1</text>
+    <text x="62" y="67" class="glyph">1</text>
+    <text x="65" y="67" class="glyph bright">0</text>
+    <text x="68" y="67" class="glyph">1</text>
+    <text x="71" y="67" class="glyph bright">0</text>
+    <text x="74" y="67" class="glyph">0</text>
+
+    <!-- Row 11 (Legs) -->
+    <text x="24" y="72" class="glyph">1</text>
+    <text x="27" y="72" class="glyph bright">0</text>
+    <text x="30" y="72" class="glyph">0</text>
+    <text x="33" y="72" class="glyph bright">0</text>
+    <text x="36" y="72" class="glyph">0</text>
+    <text x="64" y="72" class="glyph bright">0</text>
+    <text x="67" y="72" class="glyph">0</text>
+    <text x="70" y="72" class="glyph bright">1</text>
+    <text x="73" y="72" class="glyph">0</text>
+    <text x="76" y="72" class="glyph bright">1</text>
+
+    <!-- Row 12 (Left and Right Tips) -->
+    <text x="22" y="77" class="glyph bright">0</text>
+    <text x="25" y="77" class="glyph">0</text>
+    <text x="28" y="77" class="glyph bright">1</text>
+    <text x="31" y="77" class="glyph">0</text>
+    <text x="69" y="77" class="glyph bright">0</text>
+    <text x="72" y="77" class="glyph">0</text>
+    <text x="75" y="77" class="glyph bright">1</text>
+    <text x="78" y="77" class="glyph">0</text>
+
+    <!-- Row 13 (Bottom feet) -->
+    <text x="20" y="82" class="glyph dim">1</text>
+    <text x="23" y="82" class="glyph bright">0</text>
+    <text x="26" y="82" class="glyph">0</text>
+    <text x="74" y="82" class="glyph bright">0</text>
+    <text x="77" y="82" class="glyph">0</text>
+    <text x="80" y="82" class="glyph dim">1</text>
+
+    <!-- Row 14 (Tail ends) -->
+    <text x="18" y="87" class="glyph dim">1</text>
+    <text x="21" y="87" class="glyph">0</text>
+    <text x="79" y="87" class="glyph">0</text>
+    <text x="82" y="87" class="glyph dim">*</text>
+  </g>
+</svg>
